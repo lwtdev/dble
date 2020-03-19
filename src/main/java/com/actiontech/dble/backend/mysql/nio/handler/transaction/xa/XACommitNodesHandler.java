@@ -352,7 +352,7 @@ public class XACommitNodesHandler extends AbstractCommitNodesHandler {
                     if (LOGGER.isDebugEnabled()) {
                         LOGGER.debug("check xid is " + xid);
                     }
-                    XACheckHandler handler = new XACheckHandler(xid, mysqlCon.getSchema(), rrn.getName(), mysqlCon.getPool().getDbPool().getSource());
+                    XACheckHandler handler = new XACheckHandler(xid, mysqlCon.getSchema(), rrn.getName(), mysqlCon.getPool().getDataHost().getWriteSource());
                     // if mysql connection holding xa transaction wasn't released, may result in ER_XAER_NOTA.
                     // so we need check xid here
                     handler.checkXid();
